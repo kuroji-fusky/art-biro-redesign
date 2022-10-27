@@ -5,7 +5,7 @@ export interface LayoutProps {
   children?: React.ReactElement
 }
 
-export default function Layout(props: LayoutProps) {
+export function Layout(props: LayoutProps) {
   return (
     <>
       <Navbar />

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"name": "Art & Biro Comic",
+	"short_name": "Art & Biro",
+	"display": "minimal-ui",
+	"start_url": "/comics",
+	"scope": "/",
+	"orientation": "portrait",
+	"icons": [
+		{
+			"src": "...",
+			"sizes": "32x32",
+			"type": "image/png"
+		},
+		{
+			"src": "...",
+			"sizes": "72x72",
+			"type": "image/png"
+		}
+	]
+}
