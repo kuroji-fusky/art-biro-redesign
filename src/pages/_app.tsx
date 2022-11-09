@@ -11,7 +11,7 @@ export default function ArtAndBiro({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      {disableOnDev ?? <Analytics />}
+      {disableOnDev && <Analytics />}
     </>
   )
 }
