@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { LayoutProps } from "../Base/Layout"
 
 interface SectionScrollerProps extends LayoutProps {

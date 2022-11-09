@@ -1,33 +1,36 @@
-import SectionScroller from "./SectionScroller"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import SectionScroller from "./SectionScroller"
+import useMediaQuery from "hooks/useMediaQuery"
 
 export function Hero() {
+  const artLayout = useMediaQuery("(min-width: 1280px)")
+
   return (
-    <SectionScroller name="hero" className="h-[125vh]">
-      <div className="absolute top-0 left-0 right-0  h-screen">
+    <SectionScroller name="hero" className="h-[125vh] bg-blue-100">
+      <div className="absolute top-0 left-0 right-0 h-screen">
         A Hero component
       </div>
+      <div className="fixed -bottom-[9rem] w-full flex flex-col justify-end h-[45%] z-30">
+        <div id="art" className="relative h-full w-full">
+          <Image
+            src="/images/anb_hero-art-front.png"
+            layout="fill"
+            objectFit={artLayout ? "cover" : "contain"}
+          />
+        </div>
+      </div>
       <div
-        id="backdrop-responsive"
-        className="fixed bottom-0 w-full flex flex-col items-end h-[50%]"
+        className="fixed w-full flex flex-col justify-end h-[70%]"
+        style={{ bottom: artLayout ? "1rem" : "-6rem" }}
       >
-        <div
-          id="backdrop-art"
-          className="relative h-full w-full"
-          style={
-            {
-              "--img": "url(/images/anb_hero-art-front.png)",
-            } as any
-          }
-        ></div>
-
-        {/* <div id="mountains" className="relative h-[15rem] w-full">
+        <div id="mountains" className="relative h-full w-full">
           <Image
             src="/images/anb_hero-sky-strip.png"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
           />
-        </div> */}
+        </div>
       </div>
     </SectionScroller>
   )
