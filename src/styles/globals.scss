@@ -1,3 +1,19 @@
+@use "hero";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  :is(#contents-active, #contents-hidden) {
+    @apply transition-colors duration-1000;
+  }
+
+  #contents-active {
+    @apply bg-red-100;
+  }
+
+  #contents-hidden {
+    @apply bg-green-500;
+  }
+}
