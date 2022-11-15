@@ -10,8 +10,8 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				"mouse-memoirs": ["Mouse Memoirs", ...defaultTheme.fontFamily.sans],
-				"open-sans": ["Open Sans", ...defaultTheme.fontFamily.sans],
-			},
+				"lato": ["Lato", ...defaultTheme.fontFamily.sans],
+			}
 		},
 	},
 	plugins: [],

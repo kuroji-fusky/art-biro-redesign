@@ -1,11 +1,9 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
-type BgContextType = {
-  color: string
-  setColor: (color: string) => void
-}
-
-export const BgContext = createContext<BgContextType>({
-  color: "#fff",
-  setColor: () => {},
-})
+export const sectionCount = createContext<{
+  count: number;
+  setCount: (count: number) => void;
+}>({
+  count: 1,
+  setCount: () => {},
+});

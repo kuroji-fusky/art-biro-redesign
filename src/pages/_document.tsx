@@ -5,14 +5,14 @@ import Document, {
   NextScript,
   DocumentContext,
   DocumentInitialProps,
-} from "next/document"
+} from "next/document";
 
 export default class ArtAndBiroo extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx)
-    return initialProps
+    const initialProps = await Document.getInitialProps(ctx);
+    return initialProps;
   }
 
   render() {
@@ -30,6 +30,6 @@ export default class ArtAndBiroo extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

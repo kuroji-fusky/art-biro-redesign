@@ -1,20 +1,25 @@
-import { PageContainer } from "@/components/Base"
-import SectionScroller from "@/components/SectionScroller"
-import { Hero } from "@/components/SectionScroller"
+import { useInView } from "react-intersection-observer";
+import PageContainer from "../components/Base/PageContainer";
+import HeroSection from "../components/Sections/Hero";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import AboutSection from "../components/Sections/About";
 
 export default function Home() {
   return (
-    <PageContainer title="Home" description="2">
-      <Hero />
-      <SectionScroller name="contents" className="h-[110vh]">
-        About
-      </SectionScroller>
-      <SectionScroller name="character-art" className="h-[110vh]">
-        Character 1
-      </SectionScroller>
-      <SectionScroller name="character-biro" className="h-[110vh]">
-        Character 2
-      </SectionScroller>
+    <PageContainer title="Home">
+      <HeroSection />
+      <AboutSection />
+      <FanartSection />
     </PageContainer>
-  )
+  );
+}
+
+function FanartSection() {
+  const { ref, inView } = useInView({
+    rootMargin: "0px 0px -55.5% 0px",
+  });
+
+  return <section ref={ref} className="bg-red-100 h-[110vh] w-full"></section>;
 }
