@@ -1,15 +1,15 @@
 @tailwind base;
-@tailwind utilities;
-@tailwind components;
 
 @layer base {
+  html,
+  body {
+    @apply scroll-smooth;
+  }
 
-	html,
-	body {
-		@apply scroll-smooth;
-	}
-
-	body {
-		@apply font-lato;
-	}
+  body {
+    @apply font-lato;
+  }
 }
+
+@tailwind utilities;
+@tailwind components;

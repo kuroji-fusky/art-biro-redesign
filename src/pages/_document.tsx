@@ -7,7 +7,7 @@ import Document, {
   DocumentInitialProps,
 } from "next/document";
 
-export default class ArtAndBiroo extends Document {
+export default class ArtAndBiro extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {

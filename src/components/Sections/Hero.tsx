@@ -1,34 +1,34 @@
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useState } from "react"
+import { useInView } from "react-intersection-observer"
+import { motion, useScroll, useTransform } from "framer-motion"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function HeroSection() {
   const { ref, inView } = useInView({
     rootMargin: "-45% 0px 0px 0px",
-  });
+  })
 
-  const { scrollY } = useScroll();
+  const { scrollY } = useScroll()
 
-  const logoTransform = useTransform(scrollY, [0, 1200], [0, 1900]);
-  const artTransform = useTransform(scrollY, [0, 1500], [0, 100]);
-  const mountainTransform = useTransform(scrollY, [0, 1500], [0, 320]);
+  const logoTransform = useTransform(scrollY, [0, 1200], [0, 1900])
+  const artTransform = useTransform(scrollY, [0, 1500], [0, 100])
+  const mountainTransform = useTransform(scrollY, [0, 1500], [0, 320])
 
-  const [styleOnScroll, setStyleOnScroll] = useState(true);
+  const [styleOnScroll, setStyleOnScroll] = useState(true)
 
   useEffect(() => {
     !inView
       ? setStyleOnScroll(true)
       : setTimeout(() => {
-          setStyleOnScroll(false);
-        }, 200);
-  }, [inView]);
+          setStyleOnScroll(false)
+        }, 200)
+  }, [inView])
 
   const variants = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
-  };
+  }
 
   return (
     <section ref={ref} className="bg-blue-100 h-[120vh] w-full">
@@ -70,11 +70,11 @@ export default function HeroSection() {
             </Link>
           </div>
           <p className="text-[1.75rem] lg:text-[2.5rem] font-mouse-memoirs">
-            I'm starting with the Man in the Mirror
+            A webcomic about friendship &amp; brotherhood.
           </p>
         </motion.article>
         <div
-          id="hero-image-wrapper"
+          id="image-wrapper"
           className="pointer-events-none select-none w-full overflow-x-hidden"
         >
           <motion.div
@@ -108,5 +108,5 @@ export default function HeroSection() {
         </div>
       </motion.div>
     </section>
-  );
+  )
 }
