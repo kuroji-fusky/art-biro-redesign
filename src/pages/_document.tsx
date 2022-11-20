@@ -25,7 +25,7 @@ export default class ArtAndBiro extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body className="font-lato">
           <Main />
           <NextScript />
         </body>
