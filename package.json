@@ -1,29 +1,32 @@
 {
-  "name": "anb-next-13",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "@vercel/analytics": "^0.1.5",
-    "autoprefixer": "^10.4.13",
-    "eslint": "8.27.0",
-    "eslint-config-next": "13.0.3",
-    "framer-motion": "^7.6.6",
-    "next": "13.0.3",
-    "postcss": "^8.4.19",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-intersection-observer": "^9.4.0",
-    "sass": "^1.56.1",
-    "tailwindcss": "^3.2.4",
-    "typescript": "4.8.4"
-  }
+	"name": "anb-next-13",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.1.2",
+		"@fortawesome/free-brands-svg-icons": "^6.1.2",
+		"@fortawesome/free-solid-svg-icons": "^6.1.2",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+		"@types/node": "^18.11.9",
+		"@types/react": "^18.0.25",
+		"@types/react-dom": "^18.0.9",
+		"@vercel/analytics": "^0.1.5",
+		"autoprefixer": "^10.4.13",
+		"eslint": "^8.28.0",
+		"eslint-config-next": "^13.0.5",
+		"framer-motion": "^7.6.6",
+		"next": "13.0.5",
+		"postcss": "^8.4.19",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-intersection-observer": "^9.4.0",
+		"sass": "^1.56.1",
+		"tailwindcss": "^3.2.4",
+		"typescript": "^4.9.3"
+	}
 }
