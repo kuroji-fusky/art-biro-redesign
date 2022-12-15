@@ -1,11 +1,11 @@
-import Head from "next/head";
+import Head from "next/head"
 
 interface IContainer extends Children {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
-export default function PageContainer({
+export default function Container({
   title,
   description,
   children,
@@ -17,5 +17,5 @@ export default function PageContainer({
       </Head>
       <main>{children}</main>
     </>
-  );
+  )
 }

@@ -1,17 +1,25 @@
-import { Analytics } from "@vercel/analytics/react"
-import Layout from "../components/Base/Layout"
 import "../styles/globals.scss"
 import type { AppProps } from "next/app"
+import Layout from "../layout"
+
+import { Analytics } from "@vercel/analytics/react"
+
+import { MotionConfig } from "framer-motion"
+
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+
+config.autoAddCss = false
 
 export default function ArtAndBiro({ Component, pageProps }: AppProps) {
-  const disableOnDev = process.env.NODE_ENV !== "development"
-
   return (
     <>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      {disableOnDev && <Analytics />}
+      <Analytics mode="auto" />
+      <MotionConfig reducedMotion="user">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </MotionConfig>
     </>
   )
 }

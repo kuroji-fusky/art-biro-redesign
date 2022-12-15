@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react"
-import { useInView } from "react-intersection-observer"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import useSectionTransition from "../../hooks/useSectionTransition"
 
-export default function HeroSection() {
-  const { ref, inView } = useInView({
-    rootMargin: "-45% 0px 0px 0px",
-  })
+export function Hero() {
+  const { ref, visible } = useSectionTransition("-45% 0px 0px 0px")
 
   const { scrollY } = useScroll()
 
@@ -15,19 +12,9 @@ export default function HeroSection() {
   const artTransform = useTransform(scrollY, [0, 1500], [0, 100])
   const mountainTransform = useTransform(scrollY, [0, 1500], [0, 320])
 
-  const [styleOnScroll, setStyleOnScroll] = useState(true)
-
-  useEffect(() => {
-    !inView
-      ? setStyleOnScroll(true)
-      : setTimeout(() => {
-          setStyleOnScroll(false)
-        }, 200)
-  }, [inView])
-
   const variants = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
+    visible: { opacity: 1, pointerEvent: "auto" },
+    hidden: { opacity: 0, pointerEvent: "none" },
   }
 
   return (
@@ -38,14 +25,15 @@ export default function HeroSection() {
       <motion.div
         id="hero-wrapper"
         className={`grid place-items-center h-full ${
-          !styleOnScroll ? "pointer-events-auto" : "pointer-events-none"
+          visible ? "pointer-events-auto" : "pointer-events-none"
         }`}
         variants={variants}
-        animate={!styleOnScroll ? "visible" : "hidden"}
+        animate={visible ? "visible" : "hidden"}
+        transition={{ duration: 0.5, type: "spring" }}
       >
         <motion.article
           id="comic-info-container"
-          className="flex flex-col items-center md:gap-6 lg:gap-8 relative z-[2] top-[2.5rem] xl:top-[5rem]"
+          className="flex flex-col items-center md:gap-6 lg:gap-8 relative z-[2] top-[2.5rem] xl:top-[3.5rem]"
           style={{ y: logoTransform, willChange: "transform" }}
         >
           <div

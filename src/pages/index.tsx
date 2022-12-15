@@ -1,25 +1,17 @@
-import { useInView } from "react-intersection-observer";
-import PageContainer from "../components/Base/PageContainer";
-import HeroSection from "../components/Sections/Hero";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import AboutSection from "../components/Sections/About";
+import dynamic from "next/dynamic"
+import Container from "../components/Base/Container"
+import { Hero, About } from "../components/Sections"
+
+const Fanart = dynamic(() =>
+  import("../components/Sections/Fanart").then((s) => s.Fanart)
+)
 
 export default function Home() {
   return (
-    <PageContainer title="Home">
-      <HeroSection />
-      <AboutSection />
-      <FanartSection />
-    </PageContainer>
-  );
-}
-
-function FanartSection() {
-  const { ref, inView } = useInView({
-    rootMargin: "0px 0px -55.5% 0px",
-  });
-
-  return <section ref={ref} className="bg-red-100 h-[110vh] w-full"></section>;
+    <Container title="Home">
+      <Hero />
+      <About />
+      <Fanart />
+    </Container>
+  )
 }
