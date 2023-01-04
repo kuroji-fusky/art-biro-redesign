@@ -1,25 +1,38 @@
-import "../styles/globals.scss"
-import type { AppProps } from "next/app"
-import Layout from "../layout"
+import type { AppProps } from "next/app";
+import { MotionConfig } from "framer-motion";
+import "@styles/globals.scss";
+import useMediaReducedMotion from "@hooks/useMediaReducedMotion";
+import { Layout } from "@layout/Layout";
+import { useEffect } from "react";
 
-import { Analytics } from "@vercel/analytics/react"
+import { Lato, Mouse_Memoirs } from "@next/font/google";
+import useAppendDocumentRoot from "@hooks/useAppendDocumentRoot";
 
-import { MotionConfig } from "framer-motion"
+const mouseMemoirs = Mouse_Memoirs({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-mouse-memoirs",
+});
 
-import { config } from "@fortawesome/fontawesome-svg-core"
-import "@fortawesome/fontawesome-svg-core/styles.css"
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-lato",
+});
 
-config.autoAddCss = false
+export default function App({ Component, pageProps }: AppProps) {
+  useMediaReducedMotion();
 
-export default function ArtAndBiro({ Component, pageProps }: AppProps) {
+  useAppendDocumentRoot({
+    htmlClassName: [mouseMemoirs.variable, lato.variable],
+    bodyClassName: ["motion-safe:scroll-smooth", "motion-reduce:scroll-auto"],
+  });
+
   return (
-    <>
-      <Analytics mode="auto" />
-      <MotionConfig reducedMotion="user">
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </MotionConfig>
-    </>
-  )
+    <MotionConfig reducedMotion="user">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </MotionConfig>
+  );
 }

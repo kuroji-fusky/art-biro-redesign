@@ -1,4 +1,4 @@
-export { About } from "./About"
-export { Hero } from "./Hero"
-export { Fanart } from "./Fanart"
-export { ComicBook } from "./ComicBook"
+export { Hero } from "./home/Hero";
+export { ComicAbout } from "./home/ComicAbout";
+export { AuthorAbout } from "./home/AuthorAbout";
+export { Book } from "./home/Book";

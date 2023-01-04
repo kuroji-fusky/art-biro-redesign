@@ -1,16 +1,26 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
-export default function useScreenScroll(offset: number) {
-  const [scroll, setScroll] = useState(false)
+export default function useScreenScroll(scrollY?: number, scrollTo?: number) {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      window.scrollY > offset ? setScroll(true) : setScroll(false)
+    function handleScroll() {
+      if (window.scrollY >= scrollY! ?? 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [offset])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setScrolled]);
 
-  return scroll
+	useEffect(() => {
+		window.scrollTo({
+			top: scrollTo ?? 0
+		})
+	}, [])
+
+  return scrolled;
 }

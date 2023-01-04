@@ -9,8 +9,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				"mouse-memoirs": ["Mouse Memoirs", ...defaultTheme.fontFamily.sans],
-				"lato": ["Lato", ...defaultTheme.fontFamily.sans],
+				"mouse-memoirs": ["var(--font-mouse-memoirs)", ...defaultTheme.fontFamily.sans],
+				"lato": ["var(--font-lato)", ...defaultTheme.fontFamily.sans],
 			}
 		},
 	},
