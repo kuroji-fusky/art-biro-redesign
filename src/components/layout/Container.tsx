@@ -1,21 +1,22 @@
 import Head from "next/head"
 
-interface IContainer extends Children {
+interface ContainerProps extends ChildrenNode {
   title: string
   description?: string
 }
 
 export default function Container({
+  children,
   title,
   description,
-  children,
-}: IContainer) {
+}: ContainerProps) {
   return (
     <>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={description} />
       </Head>
-      <main>{children}</main>
+      <main id="__content-mount">{children}</main>
     </>
   )
 }
