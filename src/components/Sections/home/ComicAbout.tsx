@@ -1,7 +1,9 @@
+import styles from "./ComicAbout.module.scss"
+
 export function ComicAbout() {
   return (
-    <section className="flex flex-col h-screen p-6 !pt-5 md:!pt-12 gap-x-10 gap-y-5 xl:flex-row md:p-12">
-      <article className="relative h-full py-3 border-4 border-black px-7">
+    <section className={styles["dual-strip-group"]}>
+      <article className={styles["left-strip"]}>
         <h2>About</h2>
         <p>
           <strong>Art & Biro</strong> is a project born of the need to share a
@@ -11,7 +13,9 @@ export function ComicAbout() {
           anthropomorphic animals, and regular animals coexist.
         </p>
       </article>
-      <aside className="relative w-full h-full py-3 border-4 border-black xl:w-3/4 px-7">
+      <aside
+        className={styles["right-strip"]}
+      >
         parallax content here, on hover; filp contents
       </aside>
     </section>
