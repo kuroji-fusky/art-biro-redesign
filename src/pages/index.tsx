@@ -1,5 +1,5 @@
-import Container from "@layout/Container";
-import { Hero, ComicAbout, Book, AuthorAbout } from "@sections/index";
+import Container from "@layout/Container"
+import { Hero, ComicAbout, Book, AuthorAbout } from "@sections/index"
 
 export default function Home() {
   return (
@@ -9,5 +9,5 @@ export default function Home() {
       <Book />
       <AuthorAbout />
     </Container>
-  );
+  )
 }

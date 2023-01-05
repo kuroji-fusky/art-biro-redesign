@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react"
 
 export function ComicAbout() {
   return (
@@ -15,5 +15,5 @@ export function ComicAbout() {
       </article>
       <aside className="relative w-3/4 h-full py-3 border-4 border-black px-7"></aside>
     </section>
-  );
+  )
 }

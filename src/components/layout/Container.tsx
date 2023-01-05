@@ -1,8 +1,8 @@
-import Head from "next/head";
+import Head from "next/head"
 
 interface ContainerProps extends ChildrenNode {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
 export default function Container({
@@ -18,5 +18,5 @@ export default function Container({
       </Head>
       <main id="__content-mount">{children}</main>
     </>
-  );
+  )
 }

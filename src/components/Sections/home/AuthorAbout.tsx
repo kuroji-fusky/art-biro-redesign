@@ -12,5 +12,5 @@ export function AuthorAbout() {
       </article>
       <div className="absolute bottom-0">scrollable carousel</div>
     </section>
-  );
+  )
 }

@@ -1,14 +1,14 @@
-import Image from "next/image";
+import Image from "next/image"
 
 export default function Navbar() {
   const navItemsResponsive: React.CSSProperties = {
     fontSize: "max(2rem, calc(0.5rem + 1.55vw))",
-  };
+  }
 
   const buttonResponsive: React.CSSProperties = {
     paddingBlock: "0.15rem",
     paddingInline: "max(1vw, 1rem)",
-  };
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black">
@@ -43,5 +43,5 @@ export default function Navbar() {
         </nav>
       </div>
     </header>
-  );
+  )
 }

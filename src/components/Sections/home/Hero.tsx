@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
-import useObserverScroll from "@hooks/useObserverScroll";
+import { motion } from "framer-motion"
+import Image from "next/image"
+import useObserverScroll from "@hooks/useObserverScroll"
 
 export function Hero() {
-  const { ref, position } = useObserverScroll();
+  const { ref, position } = useObserverScroll()
 
   return (
     <section
@@ -47,5 +47,5 @@ export function Hero() {
         </motion.div>
       </article>
     </section>
-  );
+  )
 }
