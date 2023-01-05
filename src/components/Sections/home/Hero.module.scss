@@ -1,0 +1,17 @@
+.banner-strip {
+  @apply h-[90vh] p-6 md:p-12;
+  padding-bottom: 0 !important;
+  padding-top: max(1.65rem, calc(7.25rem + 1.65vw));
+}
+
+.strip-wrapper {
+  @apply relative h-full py-3 overflow-hidden border-4 border-black bg-sky-100 px-7;
+}
+
+.comic-summary {
+  @apply relative z-10 flex flex-col items-center justify-center gap-y-3.5 h-full text-center;
+}
+
+.parallax-strip {
+  @apply absolute inset-0 pointer-events-none select-none;
+}

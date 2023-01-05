@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 
-export default function useObserverScroll() {
+interface ObserverThreshold {
+  top?: number
+  bottom?: number
+}
+
+export default function useObserverScroll(props: ObserverThreshold) {
+  const { top, bottom } = props
   const [position, setPosition] = useState(0)
 
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInView({
+    rootMargin: `${top ?? 0}% 0% ${bottom ?? 0}% 0%`,
+  })
 
   useEffect(() => {
     const scrollView = () => {

@@ -1,0 +1,28 @@
+.fixed-nav {
+  @apply fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black;
+}
+
+.container {
+  @apply flex items-center justify-between px-12 select-none;
+  padding-block: max(0.25rem, 1.1vw);
+}
+
+.anb-logo {
+  position: relative;
+  height: 5rem;
+  width: max(4vw, 6.5rem);
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.nav-list {
+  font-size: max(2rem, calc(0.5rem + 1.55vw));
+}
+
+.kofi-button {
+  @apply text-white duration-300 bg-orange-400 rounded-lg hover:bg-orange-500 transition-colors;
+  padding-block: 0.15rem;
+  padding-inline: max(1vw, 1rem);
+}

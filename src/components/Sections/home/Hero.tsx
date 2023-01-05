@@ -1,51 +1,57 @@
-import { motion } from "framer-motion"
+import { motion, Transition } from "framer-motion"
 import Image from "next/image"
 import useObserverScroll from "@hooks/useObserverScroll"
+import styles from "./Hero.module.scss"
 
 export function Hero() {
-  const { ref, position } = useObserverScroll()
+  const { ref, position } = useObserverScroll({
+    top: 25,
+  })
 
   return (
-    <section
-      ref={ref}
-      className="h-[90vh] p-6 !pb-0 md:p-12"
-      style={{
-        paddingTop: "max(1.65rem, calc(7.25rem + 1.65vw))",
-      }}
-    >
-      <article className="relative h-full py-3 overflow-hidden border-4 border-black bg-sky-100 px-7">
-        <div className="relative z-10 grid h-full text-center place-items-center">
-          <div>
-            logo
-            <h3>A webcomic about friendship & brotherhood.</h3>
-          </div>
+    <section ref={ref} className={styles["banner-strip"]}>
+      <article className={styles["strip-wrapper"]}>
+        <div className={styles["comic-summary"]}>
+          logo
+          <h3>A webcomic about friendship & brotherhood.</h3>
         </div>
-        <motion.div
-          animate={{ y: position / 2 }}
-          className="absolute inset-0 pointer-events-none select-none"
-          transition={{ duration: 0.5, ease: "circOut" }}
-        >
-          <Image
-            src="/images/anb_hero-sky-strip.png"
-            alt=""
-            fill
-            style={{ objectFit: "contain", objectPosition: "50% 100%" }}
-          />
-        </motion.div>
-
-        <motion.div
-          animate={{ y: position / 3.85 }}
-          transition={{ duration: 0.5, ease: "circOut" }}
-          className="absolute inset-0 pointer-events-none select-none"
-        >
-          <Image
-            src="/images/anb_hero-art-front.png"
-            alt=""
-            fill
-            style={{ objectFit: "contain", objectPosition: "50% 100%" }}
-          />
-        </motion.div>
+        <ImageParallaxWrapper
+          position={position}
+          rate={2}
+          image="anb_hero-sky-strip.png"
+        />
+        <ImageParallaxWrapper
+          position={position}
+          rate={3.85}
+          image="anb_hero-art-front.png"
+        />
       </article>
     </section>
+  )
+}
+
+interface HeroParallaxProps {
+  position: number
+  rate: number
+  image: string
+}
+
+function ImageParallaxWrapper({ position, rate, image }: HeroParallaxProps) {
+  const bezier: Transition = { duration: 0.5, ease: "circOut" }
+
+  return (
+    <motion.div
+      animate={{ y: position / rate }}
+      transition={bezier}
+      className={styles["parallax-strip"]}
+    >
+      <Image
+        src={`/images/${image}`}
+        alt=""
+        fill
+        style={{ objectFit: "contain", objectPosition: "50% 100%" }}
+        priority
+      />
+    </motion.div>
   )
 }
