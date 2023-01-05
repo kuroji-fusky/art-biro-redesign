@@ -18,5 +18,5 @@ export default function useAppendDocumentRoot({
       htmlRoot.classList.add(...htmlClassName)
       bodyRoot.classList.add(...bodyClassName)
     }
-  }, [])
+  }, [bodyClassName, htmlClassName])
 }

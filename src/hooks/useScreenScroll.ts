@@ -14,13 +14,13 @@ export default function useScreenScroll(scrollY?: number, scrollTo?: number) {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [setScrolled])
+  }, [setScrolled, scrollY])
 
   useEffect(() => {
     window.scrollTo({
       top: scrollTo ?? 0,
     })
-  }, [])
+  }, [scrollTo])
 
   return scrolled
 }
