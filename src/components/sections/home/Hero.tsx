@@ -45,13 +45,7 @@ function ImageParallaxWrapper({ position, rate, image }: HeroParallaxProps) {
       transition={bezier}
       className={styles["parallax-strip"]}
     >
-      <Image
-        src={`/images/${image}`}
-        alt=""
-        fill
-        style={{ objectFit: "contain", objectPosition: "50% 100%" }}
-        priority
-      />
+      <Image src={`/images/${image}`} alt="" fill priority />
     </motion.div>
   )
 }

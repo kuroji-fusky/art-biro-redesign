@@ -18,4 +18,16 @@
 
 .parallax-strip {
   @apply absolute inset-0 pointer-events-none select-none;
+
+  img {
+    object-fit: contain !important;
+
+    transform: scale(2.5);
+    object-position: 26vw 69%;
+
+    @media (min-width: 1024px) {
+      transform: scale(1);
+      object-position: 50% 100%;
+    }
+  }
 }
