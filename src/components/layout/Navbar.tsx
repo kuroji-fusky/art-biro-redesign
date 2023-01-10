@@ -3,55 +3,69 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import styles from "./Navbar.module.scss"
+import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
+import { CLIENT_ONLY } from "@constants/index"
 
 export default function Navbar() {
-  const containerRef = useRef<HTMLDivElement>(null)
   const [isNavbarOpen, setIsNavbarOpen] = useState(false)
-  // const [navHeight, setNavHeight] = useState<number>()
+  const [scrollHeight, setScrollHeight] = useState(0)
+  const navRef = useRef<HTMLDivElement>(null)
 
-  // const detectHeightResponsive = () => {
-  //   setNavHeight(containerRef.current?.scrollHeight ?? 1)
-  // }
+  const dynamicScroll = navRef.current?.clientHeight
 
-  // useEffect(() => {
-  //   window.addEventListener("resize", detectHeightResponsive)
-  //   return () => window.removeEventListener("resize", detectHeightResponsive)
-  // }, [])
+  const handleNavScroll = () => {
+    if (CLIENT_ONLY) {
+      setScrollHeight(dynamicScroll ?? 105)
+    }
+  }
 
-  // console.log(`${navHeight}px`)
+  useEffect(() => {
+    handleNavScroll()
+
+    window.addEventListener("resize", handleNavScroll)
+    return () => window.removeEventListener("resize", handleNavScroll)
+  }, [])
+
   return (
     <header className={styles["fixed-nav"]}>
-      <motion.div ref={containerRef} className={styles["container"]}>
-        <Link href="/" className={styles["anb-logo"]}>
-          <Image src="/images/logo.png" alt="Logo" fill />
-        </Link>
-        <nav className={styles["nav-list"]}>
-          <button
-            className="block text-2xl lg:hidden"
-            onClick={() => setIsNavbarOpen(!isNavbarOpen)}
-          >
-            X
-          </button>
-          <ul
-            className="absolute flex flex-col items-end opacity-50 top-24 lg:top-0 right-10 lg:right-0 lg:relative gap-y-5 gap-x-12 lg:items-center lg:flex-row lg:opacity-100 font-mouse-memoirs"
-            aria-hidden="false"
-          >
-            <li>
-              <Link href="/comics">Comics</Link>
-            </li>
-            <li>
-              <Link href="/fanart">Fanart</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact</Link>
-            </li>
-            <li>
-              <button className={styles["kofi-button"]}>
-                Available at Ko-Fi
-              </button>
-            </li>
-          </ul>
-        </nav>
+      <motion.div animate={{ height: !isNavbarOpen ? scrollHeight : "100vh" }}>
+        <div ref={navRef} className={styles["nav-wrapper"]}>
+          <Link href="/" className={styles["anb-logo"]}>
+            <Image
+              src="/images/logo.png"
+              alt="Logo"
+              aria-label="Art and Biro Logo"
+              fill
+            />
+          </Link>
+          <nav className={styles["nav-list"]}>
+            <button
+              className="block text-2xl md:hidden"
+              onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+            >
+              X
+            </button>
+            <ul
+              className="absolute flex flex-col items-end opacity-50 top-24 md:top-0 right-10 md:right-0 md:relative gap-y-5 gap-x-12 md:items-center md:flex-row md:opacity-100 font-mouse-memoirs"
+              aria-hidden="false"
+            >
+              <li>
+                <Link href="/comics">Comics</Link>
+              </li>
+              <li>
+                <Link href="/fanart">Fanart</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+              <li>
+                <button className={styles["kofi-button"]}>
+                  Available at Ko-Fi
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </motion.div>
     </header>
   )

@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react"
 
-const MOBILE_SIZE = 768
+export default function useIsMobile(size?: number): boolean {
+	const MOBILE_SIZE = size ?? 768
 
-export default function useIsMobile(): boolean {
   const [isMobile, setIsMobile] = useState(false)
 
   const handleResize = useCallback(() => {

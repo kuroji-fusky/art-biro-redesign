@@ -2,8 +2,12 @@
   @apply fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black;
 }
 
-.container {
-  @apply flex items-center justify-between px-12 select-none;
+.nav-wrapper {
+	@apply absolute top-0 right-0 left-0;
+}
+
+.nav-wrapper {
+  @apply flex items-center justify-between px-8 md:px-12 select-none;
   padding-block: max(0.25rem, 1.1vw);
 }
 
